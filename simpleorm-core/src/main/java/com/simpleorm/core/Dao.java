@@ -23,6 +23,7 @@ public abstract class Dao<T> {
 
   protected String fieldsList;
   protected String fieldsWithTableNameList;
+  protected Map<String, String> columnsList;
 
   private static Map<String, Dao> daoCache = new HashMap<>();
 

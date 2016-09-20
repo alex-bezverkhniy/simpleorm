@@ -12,13 +12,13 @@ class StandardDaoIntSpec extends Specification {
 
     @Shared
     Connection conn;
+
     def setup() {
         sut = Dao.getInstance(TestEntity)
     }
 
     def cleanup() {
-
-
+        sut.getConnection().prepareStatement("TRUNCATE TABLE test")
     }
 
     def "loadDefaultDbProperties should load default properties"() {
@@ -48,9 +48,6 @@ class StandardDaoIntSpec extends Specification {
         then:
         result
         result.name == testEntity.name
-
-        cleanup:
-        sut.getConnection().prepareStatement("TRUNCATE TABLE test")
     }
 /*
     def "Create3"() {
